@@ -9,6 +9,19 @@ from kivy.core.clipboard import Clipboard
 
 class GraphicConfigApp(App):
     def build(self):
+        class GraphicConfigApp(App):
+        def build(self):
+            try:
+                root = BoxLayout(orientation='vertical', padding=15, spacing=12)
+                
+                # ... здесь продолжается вся твоя текущая верстка до самого return root ...
+                
+                return root
+            except Exception as e:
+                error_file = f"{self.user_data_dir}/crash_error.txt"
+                with open(error_file, 'w', encoding='utf-8') as f:
+                    f.write(traceback.format_exc())
+                raise e
         root = BoxLayout(orientation='vertical', padding=15, spacing=12)
         
         # Заголовок
