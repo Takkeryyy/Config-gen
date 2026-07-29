@@ -13,9 +13,7 @@ orientation = portrait
 fullscreen = 0
 android.permissions = WRITE_EXTERNAL_STORAGE,READ_EXTERNAL_STORAGE
 android.accept_sdk_license = True
-
-# Фиксируем стабильные API и NDK версии, чтобы исключить рассинхрон сборщика
-android.api = 33
-android.minapi = 24
-android.ndk = 25b
-android.archs = arm64-v8a, armeabi-v7a
+- name: Set up Python 3.11
+  uses: actions/setup-python@v5
+  with:
+    python-version: '3.11'
