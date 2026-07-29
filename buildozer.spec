@@ -6,14 +6,16 @@ source.dir = .
 source.exts = py,png,jpg,kv,atlas
 version = 1.0
 
-# Жестко только необходимые стабильные пакеты. Никакого мусора вроде "android" или точных версий.
+# Строго базовые зависимости. Никаких ручных версий и лишних пакетов.
 requirements = python3,kivy
 
 orientation = portrait
 fullscreen = 0
 android.permissions = WRITE_EXTERNAL_STORAGE,READ_EXTERNAL_STORAGE
 android.accept_sdk_license = True
-- name: Set up Python 3.11
-  uses: actions/setup-python@v5
-  with:
-    python-version: '3.11'
+
+# Проверенные стабильные параметры для сборки без багов
+android.api = 33
+android.minapi = 24
+android.ndk = 25b
+android.archs = arm64-v8a, armeabi-v7a
