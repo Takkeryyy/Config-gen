@@ -1,8 +1,10 @@
 name: Build Android APK
 
+# Запуск сборки при пуше в ветку main, а также возможность запустить вручную (workflow_dispatch)
 on:
   push:
     branches: [ main ]
+  workflow_dispatch:
 
 jobs:
   build:
@@ -33,10 +35,12 @@ jobs:
       - name: Install Buildozer and Cython
         run: |
           pip install --upgrade pip
-          # Строго фиксируем Cython 3.0.10 для Kivy 2.3.0 и Buildozer 1.5.0
+          # Жесткая фиксация версий для стабильности
           pip install buildozer==1.5.0 Cython==3.0.10 virtualenv
 
       - name: Build with Buildozer
+        # Команда 'yes |' автоматически принимает все соглашения Android SDK
+        # Флаг '-v' включает подробные логи, чтобы видеть прогресс
         run: yes | buildozer -v android debug
 
       - name: Upload APK artifact
