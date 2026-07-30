@@ -1,21 +1,13 @@
-[app]
-title = GameConfigGen
-package.name = gameconfiggen
-package.domain = org.config
-source.dir = .
-source.exts = py,png,jpg,kv,atlas
-version = 1.0
+# Требования: указываем только python3 и kivy (Buildozer сам подтянет нужные версии)
+requirements = python3,kivy==2.3.0
 
-# Строго базовые зависимости. Никаких ручных версий и лишних пакетов.
-requirements = python3,kivy
+# Архитектуры: обязательно 64-битные системы для новых устройств
+android.archs = arm64-v8a, armeabi-v7a
 
-orientation = portrait
-fullscreen = 0
-android.permissions = WRITE_EXTERNAL_STORAGE,READ_EXTERNAL_STORAGE
-android.accept_sdk_license = True
-
-# Проверенные стабильные параметры для сборки без багов
-android.api = 33
+# Версии API и NDK
+android.api = 34
 android.minapi = 24
 android.ndk = 25b
-android.archs = arm64-v8a, armeabi-v7a
+
+# Важно: разрешаем автоматическое скачивание Android SDK/NDK в облаке
+android.accept_sdk_license = True
